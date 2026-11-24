@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felices 2 Meses, Mi Amor ❤️</title>
+
+    <!-- Tailwind CSS para diseño adaptable y espaciado limpio -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tipografías románticas de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variables de paleta romántica rosa y crema */
+        :root {
+            --bg-cream: #fff8f6;
+            --bg-pink-soft: #ffe4e8;
+            --rose-primary: #e11d48;
+            --rose-soft: #fb7185;
+            --envelope-flap: #e11d48;
+            --envelope-inside: #be123c;
+            --paper-color: #fffdfa;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--bg-cream) 0%, var(--bg-pink-soft) 50%, #ffd6de 100%);
+            color: #4a252c;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .font-script {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .font-serif-romantic {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Corazones y destellos flotantes de fondo */
+        .floating-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatUp linear forwards;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(105vh) scale(0.75) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.7;
+            }
+            85% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.1) rotate(24deg);
+                opacity: 0;
+            }
+        }
+
+        /* Visibilidad segura de etapas sin atrapar elementos ocultos fuera de pantalla */
+        .stage-section {
+            width: 100%;
+            transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .stage-hidden {
+            display: none !important;
+            opacity: 0;
+            transform: translateY(16px) scale(0.98);
+        }
+
+        .stage-visible {
+            display: flex !important;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Sobre 3D interactivo (Etapa 1) */
+        .envelope-wrapper {
+            perspective: 1200px;
+            cursor: pointer;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .envelope-wrapper:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .envelope {
+            position: relative;
+            width: 310px;
+            height: 210px;
+            background: var(--envelope-inside);
+            border-radius: 12px;
+            box-shadow: 0 20px 45px rgba(190, 18, 60, 0.25), 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        @media (min-width: 640px) {
+            .envelope {
+                width: 380px;
+                height: 250px;
+            }
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 155px solid transparent;
+            border-right: 155px solid transparent;
+            border-top: 118px solid var(--envelope-flap);
+            transform-origin: top;
+            transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.3s;
+            z-index: 4;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.12));
+        }
+
+        @media (min-width: 640px) {
+            .envelope-flap {
+                border-left: 190px solid transparent;
+                border-right: 190px solid transparent;
+                border-top: 140px solid var(--envelope-flap);
+            }
+        }
+
+        .envelope-pocket {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .envelope-pocket::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 165px solid #fb7185;
+            border-right: 165px solid transparent;
+            border-top: 110px solid transparent;
+            border-bottom: 110px solid #fb7185;
+        }
+
+        .envelope-pocket::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-right: 165px solid #f43f5e;
+            border-left: 165px solid transparent;
+            border-top: 110px solid transparent;
+            border-bottom: 110px solid #f43f5e;
+        }
+
+        @media (min-width: 640px) {
+            .envelope-pocket::before {
+                border-left-width: 200px;
+                border-right-width: 200px;
+                border-top-width: 130px;
+                border-bottom-width: 130px;
+            }
+            .envelope-pocket::after {
+                border-right-width: 200px;
+                border-left-width: 200px;
+                border-top-width: 130px;
+                border-bottom-width: 130px;
+            }
+        }
+
+        .letter-peek {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 88%;
+            height: 82%;
+            background: var(--paper-color);
+            border-radius: 8px;
+            z-index: 2;
+            transition: transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 20px;
+        }
+
+        .wax-seal {
+            position: absolute;
+            top: 46%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 62px;
+            height: 62px;
+            background: radial-gradient(circle at 30% 30%, #ffd1dc, #be123c 70%, #881337 100%);
+            border-radius: 50%;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 15px rgba(136, 19, 55, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+            animation: pulseSeal 2s infinite ease-in-out;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        @keyframes pulseSeal {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.09); }
+        }
+
+        .envelope.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .envelope.open .wax-seal {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.5);
+            pointer-events: none;
+        }
+
+        .envelope.open .letter-peek {
+            transform: translateX(-50%) translateY(-95px);
+        }
+
+        /* Textura de papel romántico (Etapa 2) */
+        .paper-texture {
+            background-color: #fffdfa;
+            background-image:
+                radial-gradient(#f8d7da 0.75px, transparent 0.75px),
+                radial-gradient(#f8d7da 0.75px, #fffdfa 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+
+        /* Animaciones del osito abrazando el corazón (Etapa 3) */
+        @keyframes bearBreathe {
+            0%, 100% { transform: translateY(0) scaleY(1); }
+            50% { transform: translateY(-3px) scaleY(1.015); }
+        }
+
+        @keyframes heartBeatHug {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.07); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.05); }
+            60% { transform: scale(1); }
+        }
+
+        @keyframes bearBlink {
+            0%, 92%, 96%, 100% { transform: scaleY(1); }
+            94%, 98% { transform: scaleY(0.08); }
+        }
+
+        @keyframes gentleSway {
+            0%, 100% { transform: rotate(-1.5deg); }
+            50% { transform: rotate(1.5deg); }
+        }
+
+        .bear-body-anim {
+            animation: bearBreathe 3.6s ease-in-out infinite;
+            transform-origin: center bottom;
+        }
+
+        .bear-head-anim {
+            animation: gentleSway 4.5s ease-in-out infinite;
+            transform-origin: 200px 165px;
+        }
+
+        .bear-eyes-anim {
+            animation: bearBlink 4.8s infinite;
+            transform-origin: center 128px;
+        }
+
+        .hugged-heart-anim {
+            animation: heartBeatHug 1.6s ease-in-out infinite;
+            transform-origin: 200px 245px;
+        }
+
+        /* Fondo rosa y blanco decorado para la página del rollo fotográfico (Etapa 4) */
+        .photo-stage-bg {
+            background-color: #fff9fb;
+            background-image:
+                radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 36%),
+                radial-gradient(circle at 85% 12%, rgba(255, 228, 236, 0.95) 0%, rgba(255, 228, 236, 0) 40%),
+                radial-gradient(#fbcfe8 1px, transparent 1px),
+                radial-gradient(#fbcfe8 1px, rgba(255, 255, 255, 0.8) 1px);
+            background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+            background-position: 0 0, 0 0, 0 0, 14px 14px;
+        }
+
+        /* Cinta continua de rollo fotográfico analógico */
+        .film-viewport {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            border-radius: 20px;
+            background: linear-gradient(180deg, #2b131b 0%, #3d1825 50%, #2b131b 100%);
+            box-shadow: inset 0 0 22px rgba(0, 0, 0, 0.45), 0 14px 30px rgba(190, 24, 93, 0.16);
+            padding: 16px 0;
+        }
+
+        .film-strip {
+            --film-duration: 46s;
+            display: flex;
+            align-items: stretch;
+            gap: 16px;
+            width: max-content;
+            padding: 0 16px;
+            animation: filmScroll var(--film-duration) linear infinite;
+            will-change: transform;
+        }
+
+        .film-viewport:hover .film-strip,
+        .film-viewport.is-touch-paused .film-strip,
+        .film-strip.is-paused {
+            animation-play-state: paused;
+        }
+
+        @keyframes filmScroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .film-frame {
+            position: relative;
+            flex: 0 0 auto;
+            width: 215px;
+            background: #fff9fb;
+            border-radius: 10px;
+            padding: 20px 10px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+            border: 1px solid #ffd6e2;
+        }
+
+        @media (min-width: 640px) {
+            .film-frame {
+                width: 245px;
+            }
+        }
+
+        .film-perfs-top,
+        .film-perfs-bottom {
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            height: 8px;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+
+        .film-perfs-top {
+            top: 6px;
+        }
+
+        .film-perfs-bottom {
+            bottom: 6px;
+        }
+
+        .film-perf-hole {
+            width: 10px;
+            height: 6px;
+            border-radius: 2px;
+            background: #ffe4ec;
+            box-shadow: inset 0 1px 2px rgba(136, 19, 55, 0.35);
+        }
+
+        /* Cuadro limpio de foto sin texto debajo de cada foto */
+        .film-photo-box {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            border-radius: 7px;
+            overflow: hidden;
+            position: relative;
+            background: #fff0f4;
+            border: 1px solid #fbcfe8;
+        }
+
+        .film-photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Botón con resplandor suave */
+        .glow-btn {
+            box-shadow: 0 8px 25px rgba(225, 29, 72, 0.35);
+            transition: all 0.25s ease;
+        }
+
+        .glow-btn:hover {
+            box-shadow: 0 12px 32px rgba(225, 29, 72, 0.48);
+            transform: translateY(-2px);
+        }
+
+        .glow-btn:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 relative">
+
+    <!-- ===================================================================== -->
+    <!-- CONFIGURACIÓN DE MÚSICA: "SIEMPRE SIEMPRE" - ESLABÓN ARMADO            -->
+    <!-- Coloca tu archivo siempre-siempre.mp3 en la misma carpeta del HTML.  -->
+    <!-- ===================================================================== -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="siempre-siempre.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Control flotante de música y aviso claro si falta el archivo o requiere toque -->
+    <div class="fixed top-4 right-4 z-50 flex flex-col items-end gap-1.5 max-w-[240px]">
+        <button id="music-toggle-btn"
+                type="button"
+                aria-label="Controlar música"
+                class="bg-white/90 backdrop-blur-md border border-rose-200 text-rose-600 px-3.5 py-2 rounded-full shadow-md flex items-center gap-2 text-xs sm:text-sm font-medium hover:bg-rose-50 transition-all cursor-pointer">
+            <span id="music-icon" class="text-base">🎵</span>
+            <span id="music-status-text">Siempre Siempre</span>
+        </button>
+        <p id="music-hint"
+           class="hidden bg-white/95 backdrop-blur-sm border border-rose-200 text-rose-700 text-[11px] leading-snug px-3 py-1.5 rounded-2xl shadow-sm text-right">
+        </p>
+    </div>
+
+    <!-- Contenedor de partículas flotantes -->
+    <div id="particles-container" aria-hidden="true"></div>
+
+    <!-- ===================================================================== -->
+    <!-- ETAPA 1: EL SOBRE INTERACTIVO (LA CARTA CERRADA)                      -->
+    <!-- ===================================================================== -->
+    <main id="stage-envelope" class="stage-section stage-visible flex-col items-center justify-center text-center z-10 max-w-md my-auto">
+        <div class="mb-6 sm:mb-8">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-rose-200 text-rose-600 text-xs sm:text-sm font-medium tracking-wide shadow-sm mb-3">
+                ✨ 2 Meses Juntos ✨
+            </span>
+            <h1 class="font-script text-4xl sm:text-5xl text-rose-700 drop-shadow-sm">
+                Hola mi amor, abre esto
+            </h1>
+        </div>
+
+        <!-- Sobre 3D -->
+        <div id="envelope-trigger" class="envelope-wrapper my-4" role="button" tabindex="0" aria-label="Abrir carta de aniversario">
+            <div id="envelope-box" class="envelope">
+                <div class="envelope-flap"></div>
+
+                <div class="letter-peek">
+                    <div class="w-12 h-1 bg-rose-200 rounded-full mb-2"></div>
+                    <p class="font-script text-rose-600 text-xl">Para el amor de mi vida</p>
+                    <p class="text-[11px] text-rose-400 mt-1">Con todo mi corazón ❤️</p>
+                </div>
+
+                <div class="envelope-pocket"></div>
+
+                <div class="wax-seal">
+                    <svg class="w-7 h-7 text-rose-100 drop-shadow" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <p id="tap-instruction" class="mt-7 text-rose-700/90 font-medium text-sm sm:text-base animate-bounce">
+            💌 Toca el sobre para abrirlo
+        </p>
+    </main>
+
+    <!-- ===================================================================== -->
+    <!-- ETAPA 2: LA CARTA ABIERTA (EL TEXTO ROMÁNTICO)                        -->
+    <!-- ===================================================================== -->
+    <section id="stage-letter" class="stage-section stage-hidden z-10 max-w-xl my-auto py-4">
+        <div class="paper-texture rounded-3xl shadow-2xl border border-rose-200/80 p-6 sm:p-10 relative overflow-hidden w-full">
+
+            <div class="flex items-center justify-between border-b border-rose-200/70 pb-4 mb-6">
+                <div>
+                    <p class="text-xs uppercase tracking-widest text-rose-400 font-semibold">Nuestro Capítulo Dos</p>
+                    <h2 class="font-script text-3xl sm:text-4xl text-rose-600 mt-0.5">Felices 2 Meses, Mi Amor</h2>
+                </div>
+                <div class="w-11 h-11 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 shadow-inner">
+                    ❤️
+                </div>
+            </div>
+
+            <!-- TEXTO DE LA CARTA -->
+            <div class="font-serif-romantic text-lg sm:text-xl leading-relaxed text-stone-700 space-y-4">
+                <p>
+                    Mi amor,
+                </p>
+                <p>
+                    Hoy cumplimos <strong class="text-rose-600 font-semibold">2 meses</strong> desde que volvimos, y no hay un solo dia en el que te agradezca por volver a estar conmigo, se que tuve errores y me equivoque en todo, pero te doy las gracias por darme una oportunidad mas, tal vez sea la ultima que me des, asi que no pienso desaprovecharla o cometer errores nuevamente.
+                </p>
+                <p>
+                    No hay un dia en el que no despierte pensando en ti y pensar en cuanto te amo, en cuanto necesito de ti, me hacias mucha falta todo el tiempo que no estuvimos juntos y se que fue mi culpa el por no estarlo.. Pero eso se acabo, ambos sabemos cuanto sentimos del uno al otro y no hay dia en que no te recuerde cuanto te amo y cuantas veces te lo diga, eres lo mejor que tengo y desearia volver al pasado y no cometer todos los errores que tuve. Pero ambos sabemos que eso no se puede, y que nunca mas pasaremos por lo mismo nuevamente, quiero olvidar el pasado y volver a reescribir nuestra historia.
+                </p>
+                <p>
+                    Gracias por tu paciencia, por volver y por elegir quedarte, estos meses han sido solo el comienzo de todo lo hermoso que quiero vivir junto a ti, eres una de las personas mas especiales para mi y no quiero perderte nunca mas, se que estos dias hemos estado mal con discusiones y peleas, pero eso no quitara todo el amor que tengo en ti, siempre estare luchando por ti, por nuestra relacion tan hermosa que queremos lograr.. Todo el tiempo que pasamos juntos siempre la paso feliz junto a ti, no tengo mas palabras para describir todo lo que siento por ti, me enamoran mucho tus ojitos, me enamora mucho tu risa toda hermosa, todo el tiempo que estamos juntos solo me hace feliz, y me enamora mas tu forma de ser y el como eres una niña chiquita conmigo, MI niña chiquita, mi adoracion, mi todo.. Te amo como nunca ame a nadie estef, eres y siempre seras el amor de mi vida.. te amo tal y como eres tu misma.
+                </p>
+                <p class="font-script text-2xl sm:text-3xl text-rose-600 pt-2 text-right">
+                    Te amo muchísimo mi pequeñita linda ❤️
+                </p>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-rose-100 flex flex-col items-center">
+                <button id="to-bear-btn"
+                        type="button"
+                        class="glow-btn bg-gradient-to-r from-rose-500 to-pink-600 text-white font-medium px-7 py-3.5 rounded-full text-sm sm:text-base flex items-center gap-2 cursor-pointer">
+                    <span>tengo algo mas para ti corazón</span>
+                    <span class="text-lg">✨</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- ETAPA 3: EL OSITO SENTADO DE FRENTE ABRAZANDO UN CORAZÓN              -->
+    <!-- ===================================================================== -->
+    <section id="stage-bear" class="stage-section stage-hidden z-10 max-w-lg flex-col items-center text-center my-auto py-4">
+
+        <div class="bg-white/80 backdrop-blur-md border border-rose-200/80 rounded-3xl shadow-2xl p-6 sm:p-8 w-full flex flex-col items-center relative overflow-hidden">
+
+            <div class="flex items-center gap-2 text-rose-400 text-sm mb-1">
+                <span>❤</span>
+                <span class="uppercase tracking-widest text-xs font-semibold text-rose-500">este osito para ti..</span>
+                <span>❤</span>
+            </div>
+
+            <!-- Ilustración SVG: Osito sentado de frente abrazando un corazón por delante sin traspasar -->
+            <div class="w-full max-w-[300px] sm:max-w-[330px] my-2 relative">
+                <svg viewBox="0 0 400 390" class="w-full h-auto drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="bearFurMain" cx="50%" cy="40%" r="60%">
+                            <stop offset="0%" stop-color="#d69e66"/>
+                            <stop offset="70%" stop-color="#b67b44"/>
+                            <stop offset="100%" stop-color="#965f2e"/>
+                        </radialGradient>
+
+                        <radialGradient id="bearFurLight" cx="50%" cy="40%" r="55%">
+                            <stop offset="0%" stop-color="#f7dfc1"/>
+                            <stop offset="100%" stop-color="#e3bd91"/>
+                        </radialGradient>
+
+                        <radialGradient id="bearPawPad" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#f5d0b5"/>
+                            <stop offset="100%" stop-color="#dba47e"/>
+                        </radialGradient>
+
+                        <radialGradient id="bigHeartGrad" cx="35%" cy="30%" r="70%">
+                            <stop offset="0%" stop-color="#ff758f"/>
+                            <stop offset="45%" stop-color="#f43f5e"/>
+                            <stop offset="100%" stop-color="#be123c"/>
+                        </radialGradient>
+
+                        <radialGradient id="floorShadow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="rgba(159, 18, 57, 0.22)"/>
+                            <stop offset="100%" stop-color="rgba(159, 18, 57, 0)"/>
+                        </radialGradient>
+                    </defs>
+
+                    <!-- Sombra en el suelo -->
+                    <ellipse cx="200" cy="358" rx="125" ry="20" fill="url(#floorShadow)" />
+
+                    <!-- Corazoncitos decorativos -->
+                    <g fill="#fb7185" opacity="0.85">
+                        <path d="M72 135 c-4-6-12-4-12 3 0 6 12 13 12 13s12-7 12-13c0-7-8-9-12-3z" />
+                        <path d="M328 125 c-3-5-10-3-10 2.5 0 5 10 11 10 11s10-6 10-11c0-5.5-7-7.5-10-2.5z" />
+                        <path d="M90 215 c-2.5-4-8-2.5-8 2 0 4 8 9 8 9s8-5 8-9c0-4.5-5.5-6-8-2z" />
+                        <path d="M312 205 c-3-4.5-9-3-9 2.2 0 4.5 9 10 9 10s9-5.5 9-10c0-5.2-6-6.7-9-2.2z" />
+                    </g>
+
+                    <!-- Cuerpo sentado y patitas -->
+                    <g class="bear-body-anim">
+                        <ellipse cx="200" cy="260" rx="82" ry="88" fill="url(#bearFurMain)" />
+                        <ellipse cx="200" cy="268" rx="54" ry="62" fill="url(#bearFurLight)" />
+
+                        <g transform="translate(126, 315) rotate(-14)">
+                            <ellipse cx="0" cy="0" rx="34" ry="42" fill="url(#bearFurMain)" stroke="#8c5627" stroke-width="1.5"/>
+                            <ellipse cx="0" cy="4" rx="22" ry="28" fill="url(#bearPawPad)" />
+                            <circle cx="-10" cy="-14" r="4.5" fill="#c28359" />
+                            <circle cx="0" cy="-17" r="5" fill="#c28359" />
+                            <circle cx="10" cy="-14" r="4.5" fill="#c28359" />
+                            <ellipse cx="0" cy="7" rx="12" ry="11" fill="#c28359" />
+                        </g>
+
+                        <g transform="translate(274, 315) rotate(14)">
+                            <ellipse cx="0" cy="0" rx="34" ry="42" fill="url(#bearFurMain)" stroke="#8c5627" stroke-width="1.5"/>
+                            <ellipse cx="0" cy="4" rx="22" ry="28" fill="url(#bearPawPad)" />
+                            <circle cx="-10" cy="-14" r="4.5" fill="#c28359" />
+                            <circle cx="0" cy="-17" r="5" fill="#c28359" />
+                            <circle cx="10" cy="-14" r="4.5" fill="#c28359" />
+                            <ellipse cx="0" cy="7" rx="12" ry="11" fill="#c28359" />
+                        </g>
+                    </g>
+
+                    <!-- Hombros detrás del corazón -->
+                    <g class="bear-body-anim">
+                        <ellipse cx="122" cy="222" rx="22" ry="30" transform="rotate(24 122 222)" fill="url(#bearFurMain)" stroke="#8c5627" stroke-width="1.5" />
+                        <ellipse cx="278" cy="222" rx="22" ry="30" transform="rotate(-24 278 222)" fill="url(#bearFurMain)" stroke="#8c5627" stroke-width="1.5" />
+                    </g>
+
+                    <!-- Corazón por delante del pecho -->
+                    <g class="hugged-heart-anim">
+                        <path d="M200 314
+                                 C 195 309, 134 266, 134 224
+                                 C 134 198, 154 184, 174 184
+                                 C 187 184, 196 191, 200 199
+                                 C 204 191, 213 184, 226 184
+                                 C 246 184, 266 198, 266 224
+                                 C 266 266, 205 309, 200 314 Z"
+                              fill="url(#bigHeartGrad)"
+                              stroke="#9f1239"
+                              stroke-width="2" />
+                        <path d="M150 209 C 153 198, 163 194, 172 197"
+                              fill="none" stroke="rgba(255,255,255,0.65)" stroke-width="4.5" stroke-linecap="round" />
+                        <text x="200" y="250" text-anchor="middle" fill="#fff1f2" font-family="'Dancing Script', cursive" font-size="25" font-weight="bold">
+                            2 Meses
+                        </text>
+                    </g>
+
+                    <!-- Manitas abrazando los lados del corazón -->
+                    <g class="bear-body-anim">
+                        <g transform="translate(139, 246) rotate(-18)">
+                            <ellipse cx="0" cy="0" rx="18" ry="14" fill="url(#bearFurMain)" stroke="#8c5627" stroke-width="1.5" />
+                            <ellipse cx="2" cy="0" rx="12" ry="9" fill="url(#bearFurLight)" />
+                        </g>
+
+                        <g transform="translate(261, 246) rotate(18)">
+                            <ellipse cx="0" cy="0" rx="18" ry="14" fill="url(#bearFurMain)" stroke="#8c5627" stroke-width="1.5" />
+                            <ellipse cx="-2" cy="0" rx="12" ry="9" fill="url(#bearFurLight)" />
+                        </g>
+                    </g>
+
+                    <!-- Cabeza del osito -->
+                    <g class="bear-head-anim">
+                        <circle cx="136" cy="76" r="28" fill="url(#bearFurMain)" stroke="#8c5627" stroke-width="1.5"/>
+                        <circle cx="138" cy="78" r="16" fill="url(#bearPawPad)" />
+
+                        <circle cx="264" cy="76" r="28" fill="url(#bearFurMain)" stroke="#8c5627" stroke-width="1.5"/>
+                        <circle cx="262" cy="78" r="16" fill="url(#bearPawPad)" />
+
+                        <ellipse cx="200" cy="124" rx="74" ry="64" fill="url(#bearFurMain)" stroke="#8c5627" stroke-width="1.5"/>
+                        <path d="M192 61 Q 200 46 206 60 Q 213 50 212 63" fill="none" stroke="#8c5627" stroke-width="3" stroke-linecap="round"/>
+
+                        <ellipse cx="200" cy="142" rx="31" ry="24" fill="url(#bearFurLight)" />
+
+                        <path d="M191 132 C 191 127, 209 127, 209 132 C 209 137, 202 142, 200 142 C 198 142, 191 137, 191 132 Z" fill="#4a2518" />
+                        <ellipse cx="197" cy="131" rx="3" ry="1.5" fill="rgba(255,255,255,0.5)" />
+
+                        <path d="M200 142 L 200 149 M 189 148 Q 194.5 155 200 149 Q 205.5 155 211 148"
+                              fill="none" stroke="#4a2518" stroke-width="2.6" stroke-linecap="round" />
+
+                        <ellipse cx="155" cy="138" rx="12" ry="7" fill="#fb7185" opacity="0.55" />
+                        <ellipse cx="245" cy="138" rx="12" ry="7" fill="#fb7185" opacity="0.55" />
+
+                        <g class="bear-eyes-anim">
+                            <circle cx="171" cy="120" r="7.5" fill="#2b140e" />
+                            <circle cx="168.5" cy="117.5" r="2.6" fill="#ffffff" />
+                            <circle cx="173" cy="122" r="1.1" fill="#ffffff" />
+
+                            <circle cx="229" cy="120" r="7.5" fill="#2b140e" />
+                            <circle cx="226.5" cy="117.5" r="2.6" fill="#ffffff" />
+                            <circle cx="231" cy="122" r="1.1" fill="#ffffff" />
+                        </g>
+
+                        <path d="M162 106 Q 171 102 178 106" fill="none" stroke="#6e3f19" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M222 106 Q 229 102 238 106" fill="none" stroke="#6e3f19" stroke-width="2.2" stroke-linecap="round"/>
+                    </g>
+                </svg>
+            </div>
+
+            <h2 class="font-script text-3xl sm:text-4xl text-rose-600 mt-1">
+                Felices 2 meses, mi amor ❤️
+            </h2>
+            <p class="text-stone-600 text-sm sm:text-base mt-2 max-w-sm leading-relaxed">
+                Este osito guarda todo el cariño que siento por ti. Gracias por volver a mi vida mi niña, no te decepcionare nuevamente y siempre estare protegiendote como el osito al corazon..
+            </p>
+
+            <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5">
+                <button id="send-love-btn"
+                        type="button"
+                        class="glow-btn bg-rose-500 hover:bg-rose-600 text-white text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full transition-all cursor-pointer flex items-center gap-1.5">
+                    <span>❤️</span>
+                    <span>❤️</span>
+                </button>
+                <button id="to-photos-btn"
+                        type="button"
+                        class="glow-btn bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs sm:text-sm font-medium px-5 py-2.5 rounded-full transition-all cursor-pointer flex items-center gap-1.5">
+                    <span>entra por aqui mi amor</span>
+                    <span>❤️</span>
+                </button>
+                <button id="back-to-letter-btn"
+                        type="button"
+                        class="bg-rose-100/80 hover:bg-rose-200/80 text-rose-700 text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full transition-all cursor-pointer">
+                    volver a la carta..
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- ETAPA 4: PÁGINA DEL ROLLO FOTOGRÁFICO (DESPUÉS DEL OSITO)             -->
+    <!-- ===================================================================== -->
+    <section id="stage-photos" class="stage-section stage-hidden z-10 max-w-4xl my-auto py-4">
+        <div class="photo-stage-bg border-2 border-pink-200/90 rounded-3xl shadow-2xl p-5 sm:p-8 relative overflow-hidden w-full">
+
+            <!-- Decoración superior -->
+            <div class="pointer-events-none select-none flex items-center justify-between text-pink-400 text-lg sm:text-xl mb-2">
+                <span>🌸 💕 ✨</span>
+                <span class="px-4 py-1 rounded-full bg-white/90 border border-pink-200 text-rose-500 text-xs font-semibold tracking-wider uppercase shadow-sm">
+                    Nuestros Recuerdos · 12 Fotos
+                </span>
+                <span>✨ 💕 🌸</span>
+            </div>
+
+            <div class="text-center max-w-xl mx-auto mb-5">
+                <h2 class="font-script text-3xl sm:text-5xl text-rose-600 drop-shadow-sm">
+                    Rollo de Momentos Juntos 💕
+                </h2>
+                <p class="text-rose-900/75 text-xs sm:text-sm mt-1.5">
+                    Esto solo es un pequeño rollo de todo nuestro tiempo juntos mi niña ❤️
+                </p>
+            </div>
+
+            <!-- Controles del rollo -->
+            <div class="flex flex-wrap items-center justify-center gap-2.5 mb-5">
+                <button id="toggle-film-btn"
+                        type="button"
+                        class="bg-white/90 hover:bg-white text-rose-600 border border-pink-200 text-xs sm:text-sm font-medium px-4 py-2 rounded-full shadow-sm transition-all cursor-pointer flex items-center gap-1.5">
+                    <span id="film-play-icon">⏸️</span>
+                    <span id="film-play-text">Pausar</span>
+                </button>
+                <button id="speed-film-btn"
+                        type="button"
+                        class="bg-white/90 hover:bg-white text-rose-600 border border-pink-200 text-xs sm:text-sm font-medium px-4 py-2 rounded-full shadow-sm transition-all cursor-pointer flex items-center gap-1.5">
+                    <span>🐢</span>
+                    <span id="film-speed-text">Velocidad: Normal</span>
+                </button>
+            </div>
+
+            <!-- Ventana del rollo fotográfico continuo (12 marcos limpios sin texto debajo de cada foto) -->
+            <div id="film-viewport" class="film-viewport" role="region" aria-label="Rollo fotográfico de recuerdos">
+                <div id="film-strip" class="film-strip"></div>
+            </div>
+
+            <!-- ============================================================= -->
+            <!-- MENSAJE ESPECIAL DEBAJO DEL ROLLO (EDÍTALO A TU GUSTO)         -->
+            <!-- ============================================================= -->
+            <div class="mt-6 max-w-xl mx-auto bg-white/85 backdrop-blur-sm border border-pink-200 rounded-2xl p-5 sm:p-6 shadow-sm text-center">
+                <p class="font-serif-romantic text-lg sm:text-xl leading-relaxed text-stone-700">
+                    Cada momento que vivimos juntos vale oro para mí. Gracias por regresar a mi vida y permitirme seguir construyendo recuerdos hermosos a tu lado.
+                </p>
+                <p class="font-script text-2xl sm:text-3xl text-rose-600 mt-2">
+                    Siempre tú y yo, mi amor ❤️
+                </p>
+            </div>
+
+            <!-- Decoración de flores y corazones debajo del mensaje -->
+            <div class="mt-5 flex items-center justify-center gap-3 text-rose-400 text-xl select-none" aria-hidden="true">
+                <span>🌸</span>
+                <span>❤️</span>
+                <span>🌷</span>
+                <span>💖</span>
+                <span>🌺</span>
+                <span>❤️</span>
+                <span>🌸</span>
+            </div>
+
+            <!-- Botones para regresar al osito o a la carta -->
+            <div class="mt-5 pt-4 border-t border-pink-200/80 flex flex-wrap items-center justify-center gap-3">
+                <button id="back-to-bear-btn"
+                        type="button"
+                        class="glow-btn bg-gradient-to-r from-rose-500 to-pink-600 text-white text-xs sm:text-sm font-medium px-5 py-2.5 rounded-full cursor-pointer flex items-center gap-1.5">
+                    <span>🧸</span>
+                    <span>Volver con el osito</span>
+                </button>
+                <button id="back-to-letter-from-photos-btn"
+                        type="button"
+                        class="bg-white/90 hover:bg-white text-rose-700 border border-pink-200 text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full transition-all cursor-pointer">
+                    volver a la carta..
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        /**
+         * Controlador principal de la experiencia interactiva de 2 meses:
+         * - Partículas flotantes seguras con limpieza automática.
+         * - Reproducción de siempre-siempre.mp3 (Eslabón Armado) con estados claros.
+         * - Navegación entre las 4 etapas (#stage-envelope, #stage-letter, #stage-bear, #stage-photos).
+         * - Rollo fotográfico continuo de 12 marcos limpios (fotos/1.jpg .. fotos/12.jpg).
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            const stageEnvelope = document.getElementById('stage-envelope');
+            const stageLetter = document.getElementById('stage-letter');
+            const stageBear = document.getElementById('stage-bear');
+            const stagePhotos = document.getElementById('stage-photos');
+
+            const envelopeTrigger = document.getElementById('envelope-trigger');
+            const envelopeBox = document.getElementById('envelope-box');
+            const tapInstruction = document.getElementById('tap-instruction');
+
+            const toBearBtn = document.getElementById('to-bear-btn');
+            const toPhotosBtn = document.getElementById('to-photos-btn');
+            const backToLetterBtn = document.getElementById('back-to-letter-btn');
+            const backToBearBtn = document.getElementById('back-to-bear-btn');
+            const backToLetterFromPhotosBtn = document.getElementById('back-to-letter-from-photos-btn');
+            const sendLoveBtn = document.getElementById('send-love-btn');
+
+            const bgMusic = document.getElementById('bg-music');
+            const musicToggleBtn = document.getElementById('music-toggle-btn');
+            const musicIcon = document.getElementById('music-icon');
+            const musicStatusText = document.getElementById('music-status-text');
+            const musicHint = document.getElementById('music-hint');
+
+            const filmViewport = document.getElementById('film-viewport');
+            const filmStrip = document.getElementById('film-strip');
+            const toggleFilmBtn = document.getElementById('toggle-film-btn');
+            const filmPlayIcon = document.getElementById('film-play-icon');
+            const filmPlayText = document.getElementById('film-play-text');
+            const speedFilmBtn = document.getElementById('speed-film-btn');
+            const filmSpeedText = document.getElementById('film-speed-text');
+
+            const particlesContainer = document.getElementById('particles-container');
+            const symbols = ['❤️', '💖', '✨', '🌸', '💕'];
+
+            let isEnvelopeOpened = false;
+            let hasAudioError = false;
+            let isFilmPaused = false;
+            let isSlowSpeed = false;
+
+            // =================================================================
+            // 1. PARTÍCULAS FLOTANTES
+            // =================================================================
+            function createFloatingParticle(burst = false) {
+                if (!particlesContainer) return;
+                const particle = document.createElement('div');
+                particle.className = 'floating-particle';
+                particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+                const startLeft = Math.random() * 96;
+                const duration = burst ? (2.8 + Math.random() * 2.2) : (7 + Math.random() * 5);
+                const size = burst ? (16 + Math.random() * 12) : (12 + Math.random() * 10);
+
+                particle.style.left = `${startLeft}vw`;
+                particle.style.fontSize = `${size}px`;
+                particle.style.animationDuration = `${duration}s`;
+
+                particlesContainer.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                }, duration * 1000 + 300);
+            }
+
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => createFloatingParticle(false), i * 250);
+            }
+            setInterval(() => createFloatingParticle(false), 1600);
+
+            // =================================================================
+            // 2. AUDIO: siempre-siempre.mp3 (Eslabón Armado - Siempre Siempre)
+            // =================================================================
+            function showMusicHint(msg) {
+                if (!musicHint) return;
+                musicHint.textContent = msg;
+                musicHint.classList.remove('hidden');
+            }
+
+            function hideMusicHint() {
+                if (!musicHint) return;
+                musicHint.classList.add('hidden');
+            }
+
+            function syncMusicUI() {
+                if (!musicIcon || !musicStatusText || !bgMusic) return;
+
+                if (hasAudioError) {
+                    musicIcon.textContent = '⚠️';
+                    musicStatusText.textContent = 'Sin MP3';
+                    showMusicHint('Coloca siempre-siempre.mp3 en la misma carpeta');
+                    return;
+                }
+
+                if (!bgMusic.paused) {
+                    musicIcon.textContent = '🎵';
+                    musicStatusText.textContent = 'Siempre Siempre';
+                    hideMusicHint();
+                } else {
+                    musicIcon.textContent = '🔇';
+                    musicStatusText.textContent = 'Pausada';
+                }
+            }
+
+            if (bgMusic) {
+                bgMusic.addEventListener('error', () => {
+                    hasAudioError = true;
+                    syncMusicUI();
+                });
+
+                bgMusic.addEventListener('canplay', () => {
+                    hasAudioError = false;
+                    hideMusicHint();
+                });
+
+                bgMusic.addEventListener('play', syncMusicUI);
+                bgMusic.addEventListener('pause', syncMusicUI);
+            }
+
+            async function playSong() {
+                if (!bgMusic) return;
+                try {
+                    bgMusic.volume = 0.85;
+                    await bgMusic.play();
+                    hasAudioError = false;
+                    syncMusicUI();
+                } catch (err) {
+                    if (bgMusic.error) {
+                        hasAudioError = true;
+                        syncMusicUI();
+                    } else {
+                        musicIcon.textContent = '▶️';
+                        musicStatusText.textContent = 'Toca música';
+                        showMusicHint('Toca aquí para escuchar Siempre Siempre');
+                    }
+                }
+            }
+
+            async function toggleSong() {
+                if (!bgMusic) return;
+                if (hasAudioError) {
+                    bgMusic.load();
+                }
+                if (bgMusic.paused) {
+                    await playSong();
+                } else {
+                    bgMusic.pause();
+                    syncMusicUI();
+                }
+            }
+
+            if (musicToggleBtn) {
+                musicToggleBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleSong();
+                });
+            }
+
+            // =================================================================
+            // 3. NAVEGACIÓN ENTRE ETAPAS
+            // =================================================================
+            function switchStage(hideEl, showEl) {
+                if (!hideEl || !showEl) return;
+                hideEl.classList.remove('stage-visible');
+                hideEl.classList.add('stage-hidden');
+
+                showEl.classList.remove('stage-hidden');
+                showEl.classList.add('stage-visible');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            function handleOpenEnvelope() {
+                if (isEnvelopeOpened) return;
+                isEnvelopeOpened = true;
+
+                playSong();
+
+                if (envelopeBox) {
+                    envelopeBox.classList.add('open');
+                }
+                if (tapInstruction) {
+                    tapInstruction.textContent = 'Abriendo con amor... ❤️';
+                }
+
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(() => createFloatingParticle(true), i * 80);
+                }
+
+                setTimeout(() => {
+                    switchStage(stageEnvelope, stageLetter);
+                }, 950);
+            }
+
+            if (envelopeTrigger) {
+                envelopeTrigger.addEventListener('click', handleOpenEnvelope);
+                envelopeTrigger.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleOpenEnvelope();
+                    }
+                });
+            }
+
+            if (toBearBtn) {
+                toBearBtn.addEventListener('click', () => {
+                    for (let i = 0; i < 12; i++) {
+                        setTimeout(() => createFloatingParticle(true), i * 65);
+                    }
+                    switchStage(stageLetter, stageBear);
+                });
+            }
+
+            if (toPhotosBtn) {
+                toPhotosBtn.addEventListener('click', () => {
+                    for (let i = 0; i < 14; i++) {
+                        setTimeout(() => createFloatingParticle(true), i * 60);
+                    }
+                    switchStage(stageBear, stagePhotos);
+                });
+            }
+
+            if (backToLetterBtn) {
+                backToLetterBtn.addEventListener('click', () => {
+                    switchStage(stageBear, stageLetter);
+                });
+            }
+
+            if (backToBearBtn) {
+                backToBearBtn.addEventListener('click', () => {
+                    switchStage(stagePhotos, stageBear);
+                });
+            }
+
+            if (backToLetterFromPhotosBtn) {
+                backToLetterFromPhotosBtn.addEventListener('click', () => {
+                    switchStage(stagePhotos, stageLetter);
+                });
+            }
+
+            if (sendLoveBtn) {
+                sendLoveBtn.addEventListener('click', () => {
+                    for (let i = 0; i < 16; i++) {
+                        setTimeout(() => createFloatingParticle(true), i * 50);
+                    }
+                });
+            }
+
+            // =================================================================
+            // 4. ROLLO FOTOGRÁFICO DE 12 FOTOS LIMPIAS (fotos/1.jpg .. fotos/12.jpg)
+            // =================================================================
+            function buildPerfRow(className) {
+                const row = document.createElement('div');
+                row.className = className;
+                for (let i = 0; i < 8; i++) {
+                    const hole = document.createElement('span');
+                    hole.className = 'film-perf-hole';
+                    row.appendChild(hole);
+                }
+                return row;
+            }
+
+            function attachFallback(imgEl, boxEl, num) {
+                imgEl.onerror = function () {
+                    this.style.display = 'none';
+                    if (boxEl.querySelector('.film-fallback')) return;
+                    const fallback = document.createElement('div');
+                    fallback.className = 'film-fallback w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-rose-50 via-pink-50 to-white p-3 text-center';
+                    fallback.innerHTML = `
+                        <span class="text-2xl mb-1">📸</span>
+                        <span class="text-xs font-semibold text-rose-600">Foto ${num}</span>
+                        <span class="text-[10px] text-rose-400 mt-0.5">fotos/${num}.jpg</span>
+                    `;
+                    boxEl.appendChild(fallback);
+                };
+            }
+
+            function createCleanPhotoFrame(num) {
+                const frame = document.createElement('article');
+                frame.className = 'film-frame';
+
+                frame.appendChild(buildPerfRow('film-perfs-top'));
+
+                const box = document.createElement('div');
+                box.className = 'film-photo-box';
+
+                const img = document.createElement('img');
+                img.src = `fotos/${num}.jpg`;
+                img.alt = `Foto ${num}`;
+                img.loading = 'lazy';
+                attachFallback(img, box, num);
+
+                box.appendChild(img);
+                frame.appendChild(box);
+                frame.appendChild(buildPerfRow('film-perfs-bottom'));
+
+                return frame;
+            }
+
+            if (filmStrip) {
+                const frames = [];
+                for (let num = 1; num <= 12; num++) {
+                    frames.push(createCleanPhotoFrame(num));
+                }
+
+                // Conjunto original + duplicado para bucle continuo sin cortes
+                frames.forEach((frame) => filmStrip.appendChild(frame));
+                for (let num = 1; num <= 12; num++) {
+                    filmStrip.appendChild(createCleanPhotoFrame(num));
+                }
+            }
+
+            if (filmViewport) {
+                filmViewport.addEventListener('touchstart', () => {
+                    filmViewport.classList.add('is-touch-paused');
+                }, { passive: true });
+
+                filmViewport.addEventListener('touchend', () => {
+                    setTimeout(() => {
+                        filmViewport.classList.remove('is-touch-paused');
+                    }, 1200);
+                });
+            }
+
+            if (toggleFilmBtn && filmStrip) {
+                toggleFilmBtn.addEventListener('click', () => {
+                    isFilmPaused = !isFilmPaused;
+                    filmStrip.classList.toggle('is-paused', isFilmPaused);
+                    if (isFilmPaused) {
+                        filmPlayIcon.textContent = '▶️';
+                        filmPlayText.textContent = 'Reanudar rollo';
+                    } else {
+                        filmPlayIcon.textContent = '⏸️';
+                        filmPlayText.textContent = 'Pausar rollo';
+                    }
+                });
+            }
+
+            if (speedFilmBtn && filmStrip) {
+                speedFilmBtn.addEventListener('click', () => {
+                    isSlowSpeed = !isSlowSpeed;
+                    filmStrip.style.setProperty('--film-duration', isSlowSpeed ? '82s' : '46s');
+                    filmSpeedText.textContent = isSlowSpeed ? 'Velocidad: Lenta' : 'Velocidad: Normal';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
